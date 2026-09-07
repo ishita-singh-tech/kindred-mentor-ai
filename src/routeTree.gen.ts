@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard'
+import { Route as AuthenticatedFeedbackRouteImport } from './routes/_authenticated/feedback'
 import { Route as AuthenticatedMatchesRouteImport } from './routes/_authenticated/matches'
 import { Route as AuthenticatedMentorsRouteImport } from './routes/_authenticated/mentors'
 import { Route as AuthenticatedProfileRouteImport } from './routes/_authenticated/profile'
@@ -36,6 +37,11 @@ const AuthenticatedDashboardRoute = AuthenticatedDashboardRouteImport.update({
   path: '/dashboard',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const AuthenticatedFeedbackRoute = AuthenticatedFeedbackRouteImport.update({
+  id: '/feedback',
+  path: '/feedback',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 const AuthenticatedMatchesRoute = AuthenticatedMatchesRouteImport.update({
   id: '/matches',
   path: '/matches',
@@ -56,6 +62,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
+  '/feedback': typeof AuthenticatedFeedbackRoute
   '/matches': typeof AuthenticatedMatchesRoute
   '/mentors': typeof AuthenticatedMentorsRoute
   '/profile': typeof AuthenticatedProfileRoute
@@ -64,6 +71,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
+  '/feedback': typeof AuthenticatedFeedbackRoute
   '/matches': typeof AuthenticatedMatchesRoute
   '/mentors': typeof AuthenticatedMentorsRoute
   '/profile': typeof AuthenticatedProfileRoute
@@ -74,21 +82,37 @@ export interface FileRoutesById {
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/auth': typeof AuthRoute
   '/_authenticated/dashboard': typeof AuthenticatedDashboardRoute
+  '/_authenticated/feedback': typeof AuthenticatedFeedbackRoute
   '/_authenticated/matches': typeof AuthenticatedMatchesRoute
   '/_authenticated/mentors': typeof AuthenticatedMentorsRoute
   '/_authenticated/profile': typeof AuthenticatedProfileRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/auth' | '/dashboard' | '/matches' | '/mentors' | '/profile'
+  fullPaths:
+    | '/'
+    | '/auth'
+    | '/dashboard'
+    | '/feedback'
+    | '/matches'
+    | '/mentors'
+    | '/profile'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/auth' | '/dashboard' | '/matches' | '/mentors' | '/profile'
+  to:
+    | '/'
+    | '/auth'
+    | '/dashboard'
+    | '/feedback'
+    | '/matches'
+    | '/mentors'
+    | '/profile'
   id:
     | '__root__'
     | '/'
     | '/_authenticated'
     | '/auth'
     | '/_authenticated/dashboard'
+    | '/_authenticated/feedback'
     | '/_authenticated/matches'
     | '/_authenticated/mentors'
     | '/_authenticated/profile'
@@ -130,6 +154,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedDashboardRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/feedback': {
+      id: '/_authenticated/feedback'
+      path: '/feedback'
+      fullPath: '/feedback'
+      preLoaderRoute: typeof AuthenticatedFeedbackRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/matches': {
       id: '/_authenticated/matches'
       path: '/matches'
@@ -156,6 +187,7 @@ declare module '@tanstack/react-router' {
 
 interface AuthenticatedRouteRouteChildren {
   AuthenticatedDashboardRoute: typeof AuthenticatedDashboardRoute
+  AuthenticatedFeedbackRoute: typeof AuthenticatedFeedbackRoute
   AuthenticatedMatchesRoute: typeof AuthenticatedMatchesRoute
   AuthenticatedMentorsRoute: typeof AuthenticatedMentorsRoute
   AuthenticatedProfileRoute: typeof AuthenticatedProfileRoute
@@ -163,6 +195,7 @@ interface AuthenticatedRouteRouteChildren {
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedDashboardRoute: AuthenticatedDashboardRoute,
+  AuthenticatedFeedbackRoute: AuthenticatedFeedbackRoute,
   AuthenticatedMatchesRoute: AuthenticatedMatchesRoute,
   AuthenticatedMentorsRoute: AuthenticatedMentorsRoute,
   AuthenticatedProfileRoute: AuthenticatedProfileRoute,
