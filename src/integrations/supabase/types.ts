@@ -14,7 +14,157 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      allocations: {
+        Row: {
+          breakdown: Json
+          created_at: string
+          id: string
+          mentor_id: string
+          score: number
+          status: string
+          student_id: string
+        }
+        Insert: {
+          breakdown?: Json
+          created_at?: string
+          id?: string
+          mentor_id: string
+          score?: number
+          status?: string
+          student_id: string
+        }
+        Update: {
+          breakdown?: Json
+          created_at?: string
+          id?: string
+          mentor_id?: string
+          score?: number
+          status?: string
+          student_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "allocations_mentor_id_fkey"
+            columns: ["mentor_id"]
+            isOneToOne: false
+            referencedRelation: "mentors"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      feedback: {
+        Row: {
+          comment: string
+          created_at: string
+          id: string
+          mentor_id: string
+          rating: number
+          student_id: string
+        }
+        Insert: {
+          comment?: string
+          created_at?: string
+          id?: string
+          mentor_id: string
+          rating: number
+          student_id: string
+        }
+        Update: {
+          comment?: string
+          created_at?: string
+          id?: string
+          mentor_id?: string
+          rating?: number
+          student_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "feedback_mentor_id_fkey"
+            columns: ["mentor_id"]
+            isOneToOne: false
+            referencedRelation: "mentors"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      mentors: {
+        Row: {
+          bio: string
+          capacity: number
+          created_at: string
+          department: string
+          domains: string[]
+          expertise: string[]
+          id: string
+          name: string
+          rating: number
+          role: string
+        }
+        Insert: {
+          bio?: string
+          capacity?: number
+          created_at?: string
+          department: string
+          domains?: string[]
+          expertise?: string[]
+          id?: string
+          name: string
+          rating?: number
+          role: string
+        }
+        Update: {
+          bio?: string
+          capacity?: number
+          created_at?: string
+          department?: string
+          domains?: string[]
+          expertise?: string[]
+          id?: string
+          name?: string
+          rating?: number
+          role?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          batch: string
+          branch: string
+          created_at: string
+          focus_area: string
+          full_name: string
+          id: string
+          interests: string[]
+          skills: string[]
+          updated_at: string
+          year: number
+        }
+        Insert: {
+          batch?: string
+          branch?: string
+          created_at?: string
+          focus_area?: string
+          full_name?: string
+          id: string
+          interests?: string[]
+          skills?: string[]
+          updated_at?: string
+          year?: number
+        }
+        Update: {
+          batch?: string
+          branch?: string
+          created_at?: string
+          focus_area?: string
+          full_name?: string
+          id?: string
+          interests?: string[]
+          skills?: string[]
+          updated_at?: string
+          year?: number
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
