@@ -36,7 +36,7 @@ function MatchCard({
 }: {
   match: Match;
   rank: number;
-  allocatedId?: string;
+  allocatedId: string | undefined;
   onAllocate: (m: Match) => void;
   busy: boolean;
 }) {
