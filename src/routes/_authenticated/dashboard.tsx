@@ -36,7 +36,7 @@ function DashboardPage() {
   const last = feedback?.[0];
 
   return (
-    <AppShell>
+    <AppShell step="dashboard">
       <section className="grid grid-cols-1 lg:grid-cols-[336px_1fr] gap-8 items-start">
         <aside className="space-y-6">
           <div className="rounded-xl border border-border bg-card/60 p-5 animate-rise">
@@ -204,7 +204,7 @@ function DashboardPage() {
                 to="/feedback"
                 className="mt-4 inline-block rounded-lg border border-border bg-card px-3 py-2 font-display text-sm font-medium transition-colors hover:border-primary hover:text-primary"
               >
-                Rate this mentor
+                Continue to Feedback →
               </Link>
             </div>
           </div>

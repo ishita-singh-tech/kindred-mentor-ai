@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { AppShell } from "@/components/AppShell";
+import { AppShell, NextStep } from "@/components/AppShell";
 import { MentorAvatar } from "@/components/MentorAvatar";
 import { useMentors } from "@/hooks/useMentorship";
 
@@ -33,7 +33,7 @@ function MentorsPage() {
   );
 
   return (
-    <AppShell>
+    <AppShell step="mentors">
       <div className="flex flex-wrap items-end justify-between gap-4 animate-rise">
         <div>
           <div className="label-mono">Step 04 · mentor database</div>
@@ -41,12 +41,15 @@ function MentorsPage() {
             Every mentor in the pool
           </h1>
         </div>
+        <div className="flex items-center gap-3">
+        <NextStep to="/matches" label="Run matching algorithm" />
         <input
           value={q}
           onChange={(e) => setQ(e.target.value)}
           placeholder="Search expertise or department…"
           className="w-72 rounded-lg border border-border bg-card px-3 py-2 text-sm outline-none transition-colors focus:border-primary"
         />
+        </div>
       </div>
 
       {isLoading ? (
