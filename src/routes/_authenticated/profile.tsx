@@ -55,7 +55,10 @@ function ProfilePage() {
       updated_at: new Date().toISOString(),
     });
     setBusy(false);
-    if (error) return toast.error(error.message);
+    if (error) {
+      toast.error(error.message);
+      return;
+    }
     await qc.invalidateQueries({ queryKey: ["profile"] });
     toast.success("Profile saved");
     navigate({ to: "/skills" });

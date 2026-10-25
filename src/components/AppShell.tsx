@@ -34,7 +34,7 @@ function useStepState() {
     dashboard: allocated,
     feedback: (feedback?.length ?? 0) > 0,
   };
-  const unlocked = (i: number) => i === 0 || STEPS.slice(0, i).every((s) => done[s.key]) || (STEPS[i].key === "matches" && skillsDone);
+  const unlocked = (i: number) => i === 0 || STEPS.slice(0, i).every((s) => done[s.key]) || (STEPS[i]?.key === "matches" && skillsDone);
   return { done, unlocked, loading: l1 || l2 || l3, profile };
 }
 
@@ -43,7 +43,7 @@ export function AppShell({ step, children }: { step: StepKey; children: ReactNod
   const { done, unlocked, loading, profile } = useStepState();
   const idx = STEPS.findIndex((s) => s.key === step);
   const firstOpen = STEPS.findIndex((s, i) => !done[s.key] && unlocked(i));
-  const blocker = STEPS[firstOpen >= 0 ? firstOpen : 1];
+  const blocker = STEPS[firstOpen >= 0 ? firstOpen : 1] ?? STEPS[1];
   const locked = !loading && !unlocked(idx);
 
   const signOut = async () => {

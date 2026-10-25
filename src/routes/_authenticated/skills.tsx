@@ -64,7 +64,10 @@ function SkillsPage() {
       .update({ skills, interests, updated_at: new Date().toISOString() })
       .eq("id", auth.user!.id);
     setBusy(false);
-    if (error) return toast.error(error.message);
+    if (error) {
+      toast.error(error.message);
+      return;
+    }
     await qc.invalidateQueries({ queryKey: ["profile"] });
     toast.success("Skills saved");
     navigate({ to: "/mentors" });
