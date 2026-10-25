@@ -167,7 +167,7 @@ function MatchesPage() {
   const noSkills = profile && profile.skills.length === 0;
 
   return (
-    <AppShell>
+    <AppShell step="matches">
       <div className="flex flex-wrap items-end justify-between gap-4 animate-rise">
         <div>
           <div className="label-mono">Step 05 &amp; 06 · matching results, ranked</div>

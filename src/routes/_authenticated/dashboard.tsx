@@ -36,7 +36,7 @@ function DashboardPage() {
   const last = feedback?.[0];
 
   return (
-    <AppShell>
+    <AppShell step="dashboard">
       <section className="grid grid-cols-1 lg:grid-cols-[336px_1fr] gap-8 items-start">
         <aside className="space-y-6">
           <div className="rounded-xl border border-border bg-card/60 p-5 animate-rise">

@@ -33,7 +33,7 @@ function MentorsPage() {
   );
 
   return (
-    <AppShell>
+    <AppShell step="mentors">
       <div className="flex flex-wrap items-end justify-between gap-4 animate-rise">
         <div>
           <div className="label-mono">Step 04 · mentor database</div>

@@ -64,7 +64,7 @@ function FeedbackPage() {
       : "—";
 
   return (
-    <AppShell>
+    <AppShell step="feedback">
       <div className="max-w-3xl animate-rise">
         <div className="label-mono">Step 08 · feedback</div>
         <h1 className="mt-1 font-display text-2xl font-bold tracking-tight">
